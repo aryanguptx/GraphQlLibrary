@@ -1,0 +1,34 @@
+type Book {
+    id: ID!
+    title: String!
+    author: String!
+    publicationYear: Int
+    genre: String
+}
+
+
+type Query {
+    getBookById(id: ID!): Book
+}
+
+input AddBookInput {
+    id : ID!
+    title: String!
+    author: String!
+    publicationYear: Int
+    genre: String
+}
+
+type AddBookPayload {
+    status: String
+    book: Book
+}
+
+type Mutation {
+    addBook(input: AddBookInput!): AddBookPayload
+}
+
+schema {
+    query: Query
+    mutation: Mutation
+}
